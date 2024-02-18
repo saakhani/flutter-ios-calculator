@@ -31,7 +31,7 @@ class CalcHome extends StatefulWidget {
 }
 
 class _CalcHomeState extends State<CalcHome> {
-  String output = "123456";
+  String output = "";
 
   String prevNumber = "";
   String currentNumber = "";
