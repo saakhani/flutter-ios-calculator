@@ -51,28 +51,31 @@ class _CalcHomeState extends State<CalcHome> {
       double num1 = double.parse(prevNumber);
       double num2 = double.parse(currentNumber);
       if (operation == "+") {
-        output = (num1 + num2).toString();
+        output = (((num1 + num2) * 1000000).round() / 1000000).toString();
       }
       if (operation == "−") {
-        output = (num1 - num2).toString();
+        output = (((num1 - num2) * 1000000).round() / 1000000).toString();
       }
       if (operation == "×") {
-        output = (num1 * num2).toString();
+        output = (((num1 * num2) * 1000000).round() / 1000000).toString();
       }
       if (operation == "÷") {
-        output = (num1 / num2).toString();
+        output = (((num1 / num2) * 1000000).round() / 1000000).toString();
       }
       prevNumber = "";
       currentNumber = "";
       operation = "";
     } else if (text == "%") {
       double temp = double.parse(currentNumber);
-      output = (temp / 100).toString();
+      temp = temp / 100;
+      output = ((temp * 1000000).round() / 1000000).toString();
       currentNumber = output;
     } else if (text == "\u207A/\u208B") {
-        double temp = double.parse(currentNumber);
-        output = (temp * -1).toString();
-        currentNumber = output;
+      double temp = double.parse(currentNumber);
+      //round of temp to 7 decimal places
+      temp = (temp * 1000000).round() / 1000000;
+      output = (temp * -1).toString();
+      currentNumber = output;
     } else {
       currentNumber = currentNumber + text;
       output = currentNumber;
@@ -101,6 +104,7 @@ class _CalcHomeState extends State<CalcHome> {
             children: [
               Text(
                 output,
+                // overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 90,
                   color: Colors.white,
