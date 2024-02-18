@@ -18,14 +18,14 @@ class Button extends StatelessWidget {
     return MaterialButton(
       shape: const CircleBorder(),
       color: bgColor,
-      onPressed: () => onPressed(text),
+      onPressed: (){onPressed();},
       child: Container(
         height: 85,
         alignment: Alignment.center,
         child: Text(
           text,
           style: TextStyle(
-              fontSize: 35, color: textColor, fontWeight: FontWeight.normal),
+              fontSize: 38, color: textColor, fontWeight: FontWeight.normal),
         ),
       ),
     );

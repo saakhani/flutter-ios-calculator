@@ -33,6 +33,55 @@ class CalcHome extends StatefulWidget {
 class _CalcHomeState extends State<CalcHome> {
   String output = "123456";
 
+  String prevNumber = "";
+  String currentNumber = "";
+  String operation = "";
+
+  _onButtonPressed(String text) {
+    if (text == "AC") {
+      prevNumber = "";
+      currentNumber = "";
+      operation = "";
+      output = "0";
+    } else if (text == "+" || text == "−" || text == "×" || text == "÷") {
+      prevNumber = output;
+      operation = text;
+      currentNumber = "";
+    } else if (text == "=") {
+      double num1 = double.parse(prevNumber);
+      double num2 = double.parse(currentNumber);
+      if (operation == "+") {
+        output = (num1 + num2).toString();
+      }
+      if (operation == "−") {
+        output = (num1 - num2).toString();
+      }
+      if (operation == "×") {
+        output = (num1 * num2).toString();
+      }
+      if (operation == "÷") {
+        output = (num1 / num2).toString();
+      }
+      prevNumber = "";
+      currentNumber = "";
+      operation = "";
+    } else if (text == "%") {
+      double temp = double.parse(currentNumber);
+      output = (temp / 100).toString();
+      currentNumber = output;
+    } else if (text == "\u207A/\u208B") {
+        double temp = double.parse(currentNumber);
+        output = (temp * -1).toString();
+        currentNumber = output;
+    } else {
+      currentNumber = currentNumber + text;
+      output = currentNumber;
+    }
+    setState(() {
+      output = output;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -53,143 +102,195 @@ class _CalcHomeState extends State<CalcHome> {
               Text(
                 output,
                 style: TextStyle(
-                  fontSize: 80,
+                  fontSize: 90,
                   color: Colors.white,
+                  fontWeight: FontWeight.w300,
                 ),
               ),
-              const SizedBox(height: 12), // SizedBox is a widget that creates a fixed space.              
+              const SizedBox(
+                  height:
+                      12), // SizedBox is a widget that creates a fixed space.
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                       text: "AC",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("AC");
+                      },
                       bgColor: Colors.grey.shade600,
                       textColor: Colors.black),
                   Button(
-                      text: "+/-",
-                      onPressed: () {},
+                      text: "\u207A/\u208B",
+                      onPressed: () {
+                        _onButtonPressed("\u207A/\u208B");
+                      },
                       bgColor: Colors.grey.shade600,
                       textColor: Colors.black),
                   Button(
                       text: "%",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("%");
+                      },
                       bgColor: Colors.grey.shade600,
                       textColor: Colors.black),
                   Button(
                       text: "÷",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("÷");
+                      },
                       bgColor: Colors.orange,
                       textColor: Colors.white),
                 ],
               ),
-              const SizedBox(height: 12), // SizedBox is a widget that creates a fixed space.
+              const SizedBox(
+                  height:
+                      12), // SizedBox is a widget that creates a fixed space.
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                       text: "7",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("7");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "8",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("8");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "9",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("9");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "×",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("×");
+                      },
                       bgColor: Colors.orange,
                       textColor: Colors.white),
                 ],
               ),
-              const SizedBox(height: 12), // SizedBox is a widget that creates a fixed space.              
+              const SizedBox(
+                  height:
+                      12), // SizedBox is a widget that creates a fixed space.
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                       text: "4",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("4");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "5",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("5");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "6",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("6");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "−",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("-");
+                      },
                       bgColor: Colors.orange,
                       textColor: Colors.white),
                 ],
               ),
-              const SizedBox(height: 12), // SizedBox is a widget that creates a fixed space.              
+              const SizedBox(
+                  height:
+                      12), // SizedBox is a widget that creates a fixed space.
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                       text: "1",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("1");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "2",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("2");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "3",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("3");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "+",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("+");
+                      },
                       bgColor: Colors.orange,
                       textColor: Colors.white),
                 ],
               ),
-              const SizedBox(height: 12), // SizedBox is a widget that creates a fixed space.
+              const SizedBox(
+                  height:
+                      12), // SizedBox is a widget that creates a fixed space.
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MaterialButton(
-                    shape: const RoundedRectangleBorder(
-                      
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(60),
-                      ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(80),
                     ),
                     color: Colors.grey.shade900,
-                    onPressed: () {},
-                    child: const Text(
-                      "0",
-                      style: TextStyle(
-                          fontSize: 35,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
+                    onPressed: () {
+                      _onButtonPressed("0");
+                    },
+                    child: Container(
+                      height: 85,
+                      width: 155,
+                      padding: EdgeInsets.only(left: 20),
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        "0",
+                        style: TextStyle(
+                            fontSize: 38,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal),
+                      ),
                     ),
                   ),
                   Button(
                       text: ".",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed(".");
+                      },
                       bgColor: Colors.grey.shade900,
                       textColor: Colors.white),
                   Button(
                       text: "=",
-                      onPressed: () {},
+                      onPressed: () {
+                        _onButtonPressed("=");
+                      },
                       bgColor: Colors.orange,
                       textColor: Colors.white),
                 ],
