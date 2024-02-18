@@ -39,17 +39,55 @@ class _CalcHomeState extends State<CalcHome> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Column(
-        children: <Widget>[
+      body: SafeArea(child:
+      Column(
+        children: [
           Row(
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {}, 
-                child: const Text('1'),
+            children: [
+              ElevatedButton( 
+                onPressed: () {},
+                style: ElevatedButton.styleFrom( // styling the button
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  backgroundColor: Colors.green, // Button color
+                  foregroundColor: Colors.cyan, // Splash color
+                ),
+                child: Icon(Icons.menu, color: Colors.white), // icon of the button
               ),
+              ElevatedButton( 
+                onPressed: () {},
+                style: ElevatedButton.styleFrom( // styling the button
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  backgroundColor: Colors.green, // Button color
+                  foregroundColor: Colors.cyan, // Splash color
+                ),
+                child: Icon(Icons.menu, color: Colors.white), // icon of the button
+              ),  
+              ElevatedButton( 
+                onPressed: () {},
+                style: ElevatedButton.styleFrom( // styling the button
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  backgroundColor: Colors.green, // Button color
+                  foregroundColor: Colors.cyan, // Splash color
+                ),
+                child: Icon(Icons.menu, color: Colors.white), // icon of the button
+              ),
+              ElevatedButton( 
+                onPressed: () {},
+                style: ElevatedButton.styleFrom( // styling the button
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  backgroundColor: Colors.green, // Button color
+                  foregroundColor: Colors.cyan, // Splash color
+                ),
+                child: Icon(Icons.menu, color: Colors.white), // icon of the button
+              ),              
             ],
           )
         ],
+      ),
       ),
     );
   }
